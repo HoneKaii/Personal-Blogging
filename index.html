@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generic Blog</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>🐻 Generic Blog</h1>
+      <p class="tagline">A dark blogbear den for quick Tumblr-style posts.</p>
+    </header>
+
+    <main class="layout">
+      <section class="compose card">
+        <h2>Create a post</h2>
+        <form id="post-form">
+          <label for="post-title">Title</label>
+          <input id="post-title" name="title" type="text" maxlength="80" required />
+
+          <label for="post-content">Post</label>
+          <textarea id="post-content" name="content" rows="5" maxlength="1500" required></textarea>
+
+          <button type="submit">Post to feed</button>
+        </form>
+      </section>
+
+      <section class="calendar card">
+        <div class="calendar-header">
+          <button id="month-prev" type="button" aria-label="Previous month">◀</button>
+          <h2 id="month-label">Month</h2>
+          <button id="month-next" type="button" aria-label="Next month">▶</button>
+        </div>
+        <div class="weekday-grid" aria-hidden="true">
+          <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+        </div>
+        <div id="calendar-grid" class="calendar-grid" role="grid" aria-label="Posting calendar"></div>
+        <div class="calendar-tools">
+          <button id="show-all" type="button">Show all posts</button>
+          <button id="day-prev" type="button">Previous day</button>
+          <button id="day-next" type="button">Next day</button>
+        </div>
+      </section>
+
+      <section class="feed card">
+        <div class="feed-header">
+          <h2>Feed</h2>
+          <p id="feed-filter-label">Showing all posts</p>
+        </div>
+        <div id="feed-list" class="feed-list"></div>
+      </section>
+    </main>
+
+    <template id="post-template">
+      <article class="post-item">
+        <h3 class="post-title"></h3>
+        <p class="post-meta"></p>
+        <p class="post-content"></p>
+      </article>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
