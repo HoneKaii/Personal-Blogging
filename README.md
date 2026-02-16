@@ -38,6 +38,14 @@ This project is fully static HTML/CSS/JS and works directly on Netlify.
 
 No server runtime is required.
 
+### If Netlify shows "Page not found"
+
+1. Confirm `netlify.toml` is in the repository root.
+2. Confirm publish directory is `.` (project root), not a subfolder.
+3. Re-deploy after any `netlify.toml` changes.
+4. Use clean routes like `/media`, `/travel`, `/checklist` (redirected to `.html` pages).
+5. Unknown paths now fall back to `index.html` instead of the default Netlify 404 page.
+
 ## How to add media/album content (Netlify-friendly)
 
 Media is driven by `media-config.js`.
