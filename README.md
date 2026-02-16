@@ -6,12 +6,18 @@ It works like a lightweight feed: post updates, browse by date in the calendar, 
 ## Features
 
 - Dark "blogbear" wedding theme.
+- Big day highlighted on **21 March**.
 - Post updates in-browser.
 - Reverse-chronological feed.
 - Monthly calendar with post-day markers.
 - Previous/next day navigation.
 - Comments under each post.
-- Dedicated checklist/info page in a new tab.
+- Dedicated pages in new tabs:
+  - Checklist & Info
+  - Media
+  - How We Met
+  - Travel
+  - Need to Know
 - Local persistence via browser `localStorage`.
 
 > Note: Updates, comments, and checklist data are saved locally in the browser only.
@@ -21,7 +27,7 @@ It works like a lightweight feed: post updates, browse by date in the calendar, 
 GitHub Pages hosts static websites directly from your repository.
 For this project you need:
 
-1. **Static files**: `index.html`, `style.css`, `script.js`, and `checklist.html` / `checklist.js`.
+1. **Static files**: all HTML/CSS/JS pages in this repo.
 2. **A publish source**: usually branch root (`main`) or `/docs`.
 3. **Pages enabled in repository settings**.
 4. **`index.html`** as the homepage entry point.
@@ -46,22 +52,22 @@ Optional notes:
 
 Since you already use Google Photos, the easiest and most reliable option is:
 
-### Recommended now: Google Photos shared album (best immediate option)
+### Recommended now: Google Photos shared album
 
 - Create a shared wedding album.
-- Put the album link on McNeilNews.
+- Put the album link on `media.html`.
 - Let guests upload directly into that album.
 
-Why this is best for now:
-- No custom backend needed.
-- You keep everything in the photo platform you already use.
+Why this is best now:
+- No backend required.
+- You keep everything in Google Photos.
 - Storage and media handling are managed by Google.
 
-### Alternative: Upload files directly to the page
+### Alternative: upload files directly on your page
 
 This requires a backend service (or object storage + signed upload flow), because GitHub Pages is static and cannot accept uploaded files by itself.
-If you eventually want direct uploads in-site, common options are:
 
+Common options later:
 - Firebase Storage + auth
 - Supabase Storage + auth
 - Cloudinary upload widget
@@ -72,7 +78,7 @@ If you eventually want direct uploads in-site, common options are:
 1. Choose hosting (GitHub Pages, Netlify, Vercel, Cloudflare Pages, etc.).
 2. Point DNS for your domain/subdomain (for example `news.yourdomain.com`).
 3. Set custom domain and enable HTTPS.
-4. Move static files: `index.html`, `style.css`, `script.js`, `checklist.html`, `checklist.js`.
+4. Move static files.
 5. If you want shared data across devices/users, add a backend + database.
 
 ## File overview
@@ -80,5 +86,8 @@ If you eventually want direct uploads in-site, common options are:
 - `index.html`: main feed page for wedding updates.
 - `style.css`: shared dark theme styles.
 - `script.js`: update posting, comments, feed/calendar behavior.
-- `checklist.html`: separate checklist/info page.
-- `checklist.js`: checklist state handling.
+- `checklist.html` + `checklist.js`: checklist page and data handling.
+- `media.html`: media plan and photo upload guidance.
+- `how-we-met.html`: couple story page.
+- `travel.html`: travel information page.
+- `need-to-know.html`: quick wedding logistics page.

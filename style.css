@@ -42,6 +42,20 @@ body {
   margin-top: 0.5rem;
 }
 
+
+.big-day-banner {
+  margin: 0.45rem 0 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
 .checklist-link {
   text-decoration: none;
   border: 1px solid #8156a2;
@@ -173,6 +187,11 @@ button:hover {
   background: #51306c;
 }
 
+.calendar-day.big-day {
+  border-color: #ffd56a;
+  box-shadow: 0 0 0 1px #ffd56a inset;
+}
+
 .feed-list {
   display: grid;
   gap: 0.8rem;
@@ -249,6 +268,15 @@ button:hover {
   display: flex;
   justify-content: space-between;
   gap: 0.7rem;
+}
+
+.static-page ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.static-page li {
+  margin-bottom: 0.45rem;
 }
 
 @media (min-width: 900px) {

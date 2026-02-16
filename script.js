@@ -207,6 +207,11 @@ function renderCalendar() {
       dayButton.classList.add("active");
     }
 
+    if (isBigDay(key)) {
+      dayButton.classList.add("big-day");
+      dayButton.title = "Big Day - 21 March";
+    }
+
     dayButton.addEventListener("click", () => {
       selectedDate = key;
       renderAll();
@@ -267,6 +272,10 @@ function dateKey(date) {
 
 function firstOfMonth(date) {
   return new Date(date.getFullYear(), date.getMonth(), 1);
+}
+
+function isBigDay(key) {
+  return key.slice(5) === "03-21";
 }
 
 function formatDateTime(date) {
