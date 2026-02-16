@@ -1,18 +1,16 @@
 # McNeilNews
 
-McNeilNews is a dark-themed wedding update page designed for GitHub Pages.
+McNeilNews is a dark autumn-themed wedding update page.
 It works like a lightweight feed: post updates, browse by date in the calendar, and let visitors comment under each update.
 
 ## Features
 
-- Dark "blogbear" wedding theme.
+- Autumn wedding color palette.
 - Big day highlighted on **21 March**.
-- Post updates in-browser.
-- Reverse-chronological feed.
-- Monthly calendar with post-day markers.
-- Previous/next day navigation.
-- Comments under each post.
-- Dedicated pages in new tabs:
+- Post updates in-browser with comments.
+- Monthly calendar with post markers.
+- Vertical photo strip on the outside of the main page.
+- Extra tabs/pages:
   - Checklist & Info
   - Media
   - How We Met
@@ -20,74 +18,66 @@ It works like a lightweight feed: post updates, browse by date in the calendar, 
   - Need to Know
 - Local persistence via browser `localStorage`.
 
-> Note: Updates, comments, and checklist data are saved locally in the browser only.
+## 21 March fix confirmation
 
-## What GitHub Pages uses (and what is required)
+The calendar now uses a **local date key** (`YYYY-MM-DD` from local time) instead of UTC `toISOString()` slicing, which prevents accidental day-shift highlighting. This ensures the big day marker is on **March 21**.
 
-GitHub Pages hosts static websites directly from your repository.
-For this project you need:
+## Netlify compatibility
 
-1. **Static files**: all HTML/CSS/JS pages in this repo.
-2. **A publish source**: usually branch root (`main`) or `/docs`.
-3. **Pages enabled in repository settings**.
-4. **`index.html`** as the homepage entry point.
+This project is fully static HTML/CSS/JS and works directly on Netlify.
 
-Optional notes:
+### Deploy on Netlify
 
-- GitHub Pages can process Jekyll by default.
-- This project is plain HTML/CSS/JS, so no build tool is required.
-- Add `.nojekyll` if you later need files served that Jekyll would otherwise ignore.
+1. Push this repo to GitHub.
+2. In Netlify: **Add new site → Import from Git**.
+3. Build settings:
+   - Build command: *(leave blank)*
+   - Publish directory: `.`
+4. Deploy.
 
-## Deploy to GitHub Pages
+No server runtime is required.
 
-1. Push the repo to GitHub.
-2. Go to **Settings → Pages**.
-3. Under **Build and deployment**:
-   - Source: **Deploy from a branch**
-   - Branch: `main`
-   - Folder: `/ (root)`
-4. Save and wait for deployment.
+## How to add media/album content (Netlify-friendly)
 
-## Photo uploads: best option for your use case
+Media is driven by `media-config.js`.
 
-Since you already use Google Photos, the easiest and most reliable option is:
+### Add local images/videos
 
-### Recommended now: Google Photos shared album
+1. Add files to `media/photos/` (example: `media/photos/couple-shoot.jpg`).
+2. Open `media-config.js` and add an entry:
 
-- Create a shared wedding album.
-- Put the album link on `media.html`.
-- Let guests upload directly into that album.
+```js
+{
+  title: "Couple Shoot",
+  type: "image", // or "video"
+  src: "media/photos/couple-shoot.jpg",
+  caption: "Golden hour at the venue."
+}
+```
 
-Why this is best now:
-- No backend required.
-- You keep everything in Google Photos.
-- Storage and media handling are managed by Google.
+3. Commit and push; Netlify redeploys automatically.
 
-### Alternative: upload files directly on your page
+### Add Google Photos album link
 
-This requires a backend service (or object storage + signed upload flow), because GitHub Pages is static and cannot accept uploaded files by itself.
+Use a `type: "link"` entry in `media-config.js`:
 
-Common options later:
-- Firebase Storage + auth
-- Supabase Storage + auth
-- Cloudinary upload widget
-- S3-compatible storage with an API endpoint
-
-## Migrate this to your personal website
-
-1. Choose hosting (GitHub Pages, Netlify, Vercel, Cloudflare Pages, etc.).
-2. Point DNS for your domain/subdomain (for example `news.yourdomain.com`).
-3. Set custom domain and enable HTTPS.
-4. Move static files.
-5. If you want shared data across devices/users, add a backend + database.
+```js
+{
+  title: "Guest Upload Album",
+  type: "link",
+  src: "https://photos.google.com/share/...",
+  caption: "Upload your photos here"
+}
+```
 
 ## File overview
 
-- `index.html`: main feed page for wedding updates.
-- `style.css`: shared dark theme styles.
-- `script.js`: update posting, comments, feed/calendar behavior.
-- `checklist.html` + `checklist.js`: checklist page and data handling.
-- `media.html`: media plan and photo upload guidance.
+- `index.html`: main feed page + outside vertical photo strip.
+- `style.css`: shared autumn theme styles.
+- `script.js`: posting, comments, calendar behavior, and photo strip rendering.
+- `media-config.js`: central media album configuration.
+- `media.html` + `media.js`: media gallery page.
+- `checklist.html` + `checklist.js`: checklist page and logic.
 - `how-we-met.html`: couple story page.
 - `travel.html`: travel information page.
-- `need-to-know.html`: quick wedding logistics page.
+- `need-to-know.html`: key logistics page.

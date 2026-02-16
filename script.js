@@ -15,6 +15,7 @@ const monthNextButton = document.querySelector("#month-next");
 const dayPrevButton = document.querySelector("#day-prev");
 const dayNextButton = document.querySelector("#day-next");
 const showAllButton = document.querySelector("#show-all");
+const railList = document.querySelector("#rail-list");
 
 /** @type {{id: string, title: string, content: string, createdAt: string, comments: {id: string, name: string, content: string, createdAt: string}[]}[]} */
 let posts = loadPosts();
@@ -69,6 +70,7 @@ showAllButton.addEventListener("click", () => {
 });
 
 renderAll();
+renderPhotoRail();
 
 function renderAll() {
   renderCalendar();
@@ -267,7 +269,10 @@ function sortByDate(items) {
 }
 
 function dateKey(date) {
-  return date.toISOString().slice(0, 10);
+  const year = String(date.getFullYear());
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
 }
 
 function firstOfMonth(date) {
@@ -276,6 +281,53 @@ function firstOfMonth(date) {
 
 function isBigDay(key) {
   return key.slice(5) === "03-21";
+}
+
+
+function renderPhotoRail() {
+  if (!railList) {
+    return;
+  }
+
+  railList.innerHTML = "";
+  const items = Array.isArray(window.MEDIA_ITEMS) ? window.MEDIA_ITEMS : [];
+
+  const imageItems = items.filter((item) => item && item.type === "image" && item.src);
+  if (!imageItems.length) {
+    const empty = document.createElement("p");
+    empty.className = "empty-state";
+    empty.textContent = "Add photos in media-config.js to show a vertical album here.";
+    railList.appendChild(empty);
+    return;
+  }
+
+  for (const item of imageItems.slice(0, 8)) {
+    const figure = document.createElement("figure");
+    figure.className = "rail-item";
+
+    const image = document.createElement("img");
+    image.src = item.src;
+    image.alt = item.title || "Wedding photo";
+    image.loading = "lazy";
+    image.className = "rail-image";
+
+    image.addEventListener("error", () => {
+      figure.remove();
+      if (!railList.children.length) {
+        const empty = document.createElement("p");
+        empty.className = "empty-state";
+        empty.textContent = "Photo files not found yet. Add them in media/photos/.";
+        railList.appendChild(empty);
+      }
+    });
+
+    const caption = document.createElement("figcaption");
+    caption.textContent = item.title || "Wedding memory";
+
+    figure.appendChild(image);
+    figure.appendChild(caption);
+    railList.appendChild(figure);
+  }
 }
 
 function formatDateTime(date) {

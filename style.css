@@ -1,13 +1,13 @@
 :root {
   color-scheme: dark;
-  --bg: #120f16;
-  --surface: #221a2a;
-  --surface-alt: #2c2136;
-  --text: #f5eef8;
-  --muted: #cdb9d6;
-  --accent: #d7a4ff;
-  --accent-strong: #b76be9;
-  --calendar-dot: #ffd56a;
+  --bg: #1f1511;
+  --surface: #2f2019;
+  --surface-alt: #3b281f;
+  --text: #f7eee8;
+  --muted: #d5b7a2;
+  --accent: #e79d5c;
+  --accent-strong: #c96f3f;
+  --calendar-dot: #f4cf7d;
 }
 
 * {
@@ -18,12 +18,12 @@ body {
   margin: 0;
   font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--text);
-  background: radial-gradient(circle at 10% -20%, #3a2b43, var(--bg) 45%);
+  background: radial-gradient(circle at 10% -20%, #593629, var(--bg) 45%);
   min-height: 100vh;
 }
 
 .site-header {
-  max-width: 1100px;
+  max-width: 1320px;
   margin: 0 auto;
   padding: 2rem 1rem 1rem;
   display: flex;
@@ -42,7 +42,6 @@ body {
   margin-top: 0.5rem;
 }
 
-
 .big-day-banner {
   margin: 0.45rem 0 0;
   color: var(--accent);
@@ -58,8 +57,8 @@ body {
 
 .checklist-link {
   text-decoration: none;
-  border: 1px solid #8156a2;
-  background: #3f2b52;
+  border: 1px solid #a6603f;
+  background: #6b3f2b;
   color: var(--text);
   border-radius: 10px;
   padding: 0.6rem 0.9rem;
@@ -67,11 +66,11 @@ body {
 }
 
 .checklist-link:hover {
-  background: #54366d;
+  background: #814c34;
 }
 
-.layout {
-  max-width: 1100px;
+.page-shell {
+  max-width: 1320px;
   margin: 0 auto;
   padding: 0 1rem 2rem;
   display: grid;
@@ -79,12 +78,18 @@ body {
   gap: 1rem;
 }
 
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
 .card {
   background: linear-gradient(180deg, var(--surface), var(--surface-alt));
-  border: 1px solid #3f3050;
+  border: 1px solid #5a3c2f;
   border-radius: 14px;
   padding: 1rem;
-  box-shadow: 0 10px 24px rgb(0 0 0 / 30%);
+  box-shadow: 0 10px 24px rgb(0 0 0 / 28%);
 }
 
 label {
@@ -104,15 +109,15 @@ textarea {
   width: 100%;
   margin-bottom: 0.9rem;
   border-radius: 10px;
-  border: 1px solid #4d3b61;
-  background: #130f18;
+  border: 1px solid #815d4a;
+  background: #1b120d;
   color: var(--text);
   padding: 0.7rem;
 }
 
 button {
-  border: 1px solid #684784;
-  background: #352546;
+  border: 1px solid #9f6446;
+  background: #6f432f;
   color: var(--text);
   border-radius: 10px;
   padding: 0.55rem 0.8rem;
@@ -120,14 +125,14 @@ button {
 }
 
 button:hover {
-  background: #47305f;
+  background: #8a5238;
 }
 
 #post-form button,
 .comment-form button,
 .checklist-add button {
   background: var(--accent-strong);
-  border-color: #8a47bd;
+  border-color: #b66137;
   font-weight: 700;
 }
 
@@ -164,8 +169,8 @@ button:hover {
 }
 
 .calendar-grid span {
-  border: 1px dashed #3b2e4b;
-  color: #877394;
+  border: 1px dashed #6e4b3b;
+  color: #9d7b6a;
 }
 
 .calendar-day {
@@ -184,12 +189,12 @@ button:hover {
 
 .calendar-day.active {
   outline: 2px solid var(--accent);
-  background: #51306c;
+  background: #965b3c;
 }
 
 .calendar-day.big-day {
-  border-color: #ffd56a;
-  box-shadow: 0 0 0 1px #ffd56a inset;
+  border-color: #ffd083;
+  box-shadow: 0 0 0 1px #ffd083 inset;
 }
 
 .feed-list {
@@ -198,10 +203,10 @@ button:hover {
 }
 
 .post-item {
-  border: 1px solid #4a3a5c;
+  border: 1px solid #6b4b3b;
   border-radius: 10px;
   padding: 0.8rem;
-  background: #1a1520;
+  background: #261912;
 }
 
 .post-title,
@@ -224,7 +229,7 @@ button:hover {
 
 .comments-section {
   margin-top: 0.9rem;
-  border-top: 1px solid #443555;
+  border-top: 1px solid #624333;
   padding-top: 0.8rem;
 }
 
@@ -235,10 +240,44 @@ button:hover {
 }
 
 .comment-item {
-  background: #130f19;
-  border: 1px solid #41324f;
+  background: #1a120d;
+  border: 1px solid #5d3f2f;
   border-radius: 8px;
   padding: 0.55rem;
+}
+
+.photo-rail {
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.rail-note {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.rail-list {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.rail-item {
+  margin: 0;
+}
+
+.rail-image {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #6f4c3a;
+  display: block;
+  max-height: 220px;
+  object-fit: cover;
+}
+
+.rail-item figcaption {
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  color: var(--muted);
 }
 
 .empty-state {
@@ -261,8 +300,8 @@ button:hover {
 }
 
 .checklist-list li {
-  background: #1a1520;
-  border: 1px solid #443555;
+  background: #261912;
+  border: 1px solid #624333;
   border-radius: 10px;
   padding: 0.7rem;
   display: flex;
@@ -270,7 +309,8 @@ button:hover {
   gap: 0.7rem;
 }
 
-.static-page ul {
+.static-page ul,
+.static-page ol {
   margin: 0.5rem 0 0;
   padding-left: 1.2rem;
 }
@@ -279,7 +319,38 @@ button:hover {
   margin-bottom: 0.45rem;
 }
 
-@media (min-width: 900px) {
+.media-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.media-card {
+  background: #261912;
+  border: 1px solid #624333;
+  border-radius: 10px;
+  padding: 0.7rem;
+}
+
+.media-card h3 {
+  margin: 0.55rem 0 0;
+}
+
+.media-image {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #6b4938;
+  max-height: 240px;
+  object-fit: cover;
+}
+
+@media (min-width: 980px) {
+  .page-shell {
+    grid-template-columns: minmax(0, 1fr) 300px;
+    align-items: start;
+  }
+
   .layout {
     grid-template-columns: minmax(280px, 360px) 1fr;
     grid-template-areas:

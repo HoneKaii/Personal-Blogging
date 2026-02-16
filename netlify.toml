@@ -1,0 +1,27 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/media"
+  to = "/media.html"
+  status = 200
+
+[[redirects]]
+  from = "/travel"
+  to = "/travel.html"
+  status = 200
+
+[[redirects]]
+  from = "/how-we-met"
+  to = "/how-we-met.html"
+  status = 200
+
+[[redirects]]
+  from = "/need-to-know"
+  to = "/need-to-know.html"
+  status = 200
+
+[[redirects]]
+  from = "/checklist"
+  to = "/checklist.html"
+  status = 200

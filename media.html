@@ -11,11 +11,23 @@
       <section class="card static-page">
         <h1>📸 Media</h1>
         <p class="tagline">Share and view moments from our wedding journey.</p>
-        <h2>Photo sharing plan</h2>
-        <p>We recommend using our Google Photos shared album for guest uploads. This is easiest for everyone and keeps photos in one place.</p>
-        <h2>Coming soon</h2>
-        <p>Direct uploads on this website may be added later with cloud storage support.</p>
+
+        <h2>Album</h2>
+        <div id="media-gallery" class="media-gallery"></div>
+
+        <h2>How to add photos/videos (Netlify-friendly)</h2>
+        <ol>
+          <li>Add files to <code>media/photos/</code> in this repo (for example <code>media/photos/rehearsal.jpg</code>).</li>
+          <li>Open <code>media-config.js</code> and add an item with <code>type: "image"</code> or <code>type: "video"</code>.</li>
+          <li>Commit and push. Netlify redeploys automatically.</li>
+        </ol>
+
+        <h2>Google Photos option</h2>
+        <p>Keep using a Google Photos shared album by adding a <code>type: "link"</code> entry in <code>media-config.js</code>.</p>
       </section>
     </main>
+
+    <script src="media-config.js"></script>
+    <script src="media.js"></script>
   </body>
 </html>
