@@ -1,13 +1,12 @@
 :root {
   color-scheme: dark;
-  --bg: #151219;
-  --surface: #221d29;
-  --surface-alt: #2b2333;
-  --text: #f4edf7;
-  --muted: #c2aecb;
-  --accent: #d292ff;
-  --accent-strong: #b667ee;
-  --danger: #ff8fb1;
+  --bg: #120f16;
+  --surface: #221a2a;
+  --surface-alt: #2c2136;
+  --text: #f5eef8;
+  --muted: #cdb9d6;
+  --accent: #d7a4ff;
+  --accent-strong: #b76be9;
   --calendar-dot: #ffd56a;
 }
 
@@ -27,6 +26,10 @@ body {
   max-width: 1100px;
   margin: 0 auto;
   padding: 2rem 1rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
 .site-header h1 {
@@ -37,6 +40,20 @@ body {
 .tagline {
   color: var(--muted);
   margin-top: 0.5rem;
+}
+
+.checklist-link {
+  text-decoration: none;
+  border: 1px solid #8156a2;
+  background: #3f2b52;
+  color: var(--text);
+  border-radius: 10px;
+  padding: 0.6rem 0.9rem;
+  font-weight: 600;
+}
+
+.checklist-link:hover {
+  background: #54366d;
 }
 
 .layout {
@@ -92,7 +109,9 @@ button:hover {
   background: #47305f;
 }
 
-#post-form button {
+#post-form button,
+.comment-form button,
+.checklist-add button {
   background: var(--accent-strong);
   border-color: #8a47bd;
   font-weight: 700;
@@ -166,24 +185,70 @@ button:hover {
   background: #1a1520;
 }
 
-.post-title {
+.post-title,
+.comments-section h4 {
   margin: 0;
 }
 
-.post-meta {
+.post-meta,
+.comment-meta {
   margin: 0.35rem 0;
   color: var(--muted);
   font-size: 0.9rem;
 }
 
-.post-content {
+.post-content,
+.comment-content {
   white-space: pre-wrap;
   margin: 0;
+}
+
+.comments-section {
+  margin-top: 0.9rem;
+  border-top: 1px solid #443555;
+  padding-top: 0.8rem;
+}
+
+.comment-list {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0.6rem 0;
+}
+
+.comment-item {
+  background: #130f19;
+  border: 1px solid #41324f;
+  border-radius: 8px;
+  padding: 0.55rem;
 }
 
 .empty-state {
   margin: 0;
   color: var(--muted);
+}
+
+.checklist-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.checklist-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.checklist-list li {
+  background: #1a1520;
+  border: 1px solid #443555;
+  border-radius: 10px;
+  padding: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.7rem;
 }
 
 @media (min-width: 900px) {

@@ -1,10 +1,11 @@
-const STORAGE_KEY = "generic-blog-posts";
+const STORAGE_KEY = "mcneilnews-posts";
 
 const form = document.querySelector("#post-form");
 const titleInput = document.querySelector("#post-title");
 const contentInput = document.querySelector("#post-content");
 const feedList = document.querySelector("#feed-list");
 const postTemplate = document.querySelector("#post-template");
+const commentTemplate = document.querySelector("#comment-template");
 const monthLabel = document.querySelector("#month-label");
 const calendarGrid = document.querySelector("#calendar-grid");
 const filterLabel = document.querySelector("#feed-filter-label");
@@ -15,7 +16,7 @@ const dayPrevButton = document.querySelector("#day-prev");
 const dayNextButton = document.querySelector("#day-next");
 const showAllButton = document.querySelector("#show-all");
 
-/** @type {{id: string, title: string, content: string, createdAt: string}[]} */
+/** @type {{id: string, title: string, content: string, createdAt: string, comments: {id: string, name: string, content: string, createdAt: string}[]}[]} */
 let posts = loadPosts();
 let currentMonth = firstOfMonth(new Date());
 let selectedDate = null;
@@ -34,11 +35,11 @@ form.addEventListener("submit", (event) => {
     id: crypto.randomUUID(),
     title,
     content,
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
+    comments: []
   };
 
-  posts.push(post);
-  posts = sortByDate(posts);
+  posts = sortByDate([...posts, post]);
   savePosts(posts);
 
   form.reset();
@@ -81,18 +82,16 @@ function renderFeed() {
     ? posts.filter((post) => dateKey(new Date(post.createdAt)) === selectedDate)
     : posts;
 
-  if (selectedDate) {
-    filterLabel.textContent = `Showing posts on ${selectedDate}`;
-  } else {
-    filterLabel.textContent = "Showing all posts";
-  }
+  filterLabel.textContent = selectedDate
+    ? `Showing updates on ${selectedDate}`
+    : "Showing all updates";
 
   if (visiblePosts.length === 0) {
     const empty = document.createElement("p");
     empty.className = "empty-state";
     empty.textContent = selectedDate
-      ? "No posts for this day yet."
-      : "No posts yet. Create your first post above.";
+      ? "No updates for this day yet."
+      : "No updates yet. Share your first one above.";
     feedList.appendChild(empty);
     return;
   }
@@ -103,8 +102,71 @@ function renderFeed() {
     node.querySelector(".post-title").textContent = post.title;
     node.querySelector(".post-content").textContent = post.content;
     node.querySelector(".post-meta").textContent = formatDateTime(createdAt);
+
+    const commentList = node.querySelector(".comment-list");
+    const commentForm = node.querySelector(".comment-form");
+    const nameField = node.querySelector(".comment-name");
+    const commentField = node.querySelector(".comment-text");
+
+    renderComments(commentList, post.comments);
+
+    commentForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const name = nameField.value.trim();
+      const content = commentField.value.trim();
+
+      if (!name || !content) {
+        return;
+      }
+
+      addComment(post.id, { name, content });
+      renderAll();
+    });
+
     feedList.appendChild(node);
   }
+}
+
+function renderComments(commentListNode, comments) {
+  commentListNode.innerHTML = "";
+
+  if (!comments.length) {
+    const empty = document.createElement("p");
+    empty.className = "empty-state";
+    empty.textContent = "No comments yet.";
+    commentListNode.appendChild(empty);
+    return;
+  }
+
+  for (const comment of comments) {
+    const node = commentTemplate.content.cloneNode(true);
+    const meta = node.querySelector(".comment-meta");
+    meta.textContent = `${comment.name} • ${formatDateTime(new Date(comment.createdAt))}`;
+    node.querySelector(".comment-content").textContent = comment.content;
+    commentListNode.appendChild(node);
+  }
+}
+
+function addComment(postId, commentInput) {
+  posts = posts.map((post) => {
+    if (post.id !== postId) {
+      return post;
+    }
+
+    const nextComment = {
+      id: crypto.randomUUID(),
+      name: commentInput.name,
+      content: commentInput.content,
+      createdAt: new Date().toISOString()
+    };
+
+    return {
+      ...post,
+      comments: [...post.comments, nextComment]
+    };
+  });
+
+  savePosts(posts);
 }
 
 function renderCalendar() {
@@ -175,7 +237,16 @@ function loadPosts() {
     }
 
     return sortByDate(
-      parsed.filter((post) => post && post.id && post.title && post.content && post.createdAt)
+      parsed
+        .filter((post) => post && post.id && post.title && post.content && post.createdAt)
+        .map((post) => ({
+          ...post,
+          comments: Array.isArray(post.comments)
+            ? post.comments.filter(
+                (comment) => comment && comment.id && comment.name && comment.content && comment.createdAt
+              )
+            : []
+        }))
     );
   } catch {
     return [];

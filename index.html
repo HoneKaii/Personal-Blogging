@@ -3,26 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Generic Blog</title>
+    <title>McNeilNews</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header class="site-header">
-      <h1>🐻 Generic Blog</h1>
-      <p class="tagline">A dark blogbear den for quick Tumblr-style posts.</p>
+      <div>
+        <h1>💍 McNeilNews</h1>
+        <p class="tagline">A dark wedding update hub for friends and family.</p>
+      </div>
+      <a class="checklist-link" href="checklist.html" target="_blank" rel="noopener noreferrer">
+        Open Checklist & Info
+      </a>
     </header>
 
     <main class="layout">
       <section class="compose card">
-        <h2>Create a post</h2>
+        <h2>Post an update</h2>
         <form id="post-form">
           <label for="post-title">Title</label>
           <input id="post-title" name="title" type="text" maxlength="80" required />
 
-          <label for="post-content">Post</label>
+          <label for="post-content">Update</label>
           <textarea id="post-content" name="content" rows="5" maxlength="1500" required></textarea>
 
-          <button type="submit">Post to feed</button>
+          <button type="submit">Share update</button>
         </form>
       </section>
 
@@ -37,7 +42,7 @@
         </div>
         <div id="calendar-grid" class="calendar-grid" role="grid" aria-label="Posting calendar"></div>
         <div class="calendar-tools">
-          <button id="show-all" type="button">Show all posts</button>
+          <button id="show-all" type="button">Show all updates</button>
           <button id="day-prev" type="button">Previous day</button>
           <button id="day-next" type="button">Next day</button>
         </div>
@@ -45,8 +50,8 @@
 
       <section class="feed card">
         <div class="feed-header">
-          <h2>Feed</h2>
-          <p id="feed-filter-label">Showing all posts</p>
+          <h2>Update Feed</h2>
+          <p id="feed-filter-label">Showing all updates</p>
         </div>
         <div id="feed-list" class="feed-list"></div>
       </section>
@@ -57,6 +62,28 @@
         <h3 class="post-title"></h3>
         <p class="post-meta"></p>
         <p class="post-content"></p>
+        <section class="comments-section">
+          <h4>Comments</h4>
+          <div class="comment-list"></div>
+          <form class="comment-form">
+            <label>
+              Name
+              <input class="comment-name" type="text" maxlength="50" required />
+            </label>
+            <label>
+              Comment
+              <textarea class="comment-text" rows="3" maxlength="600" required></textarea>
+            </label>
+            <button type="submit">Add comment</button>
+          </form>
+        </section>
+      </article>
+    </template>
+
+    <template id="comment-template">
+      <article class="comment-item">
+        <p class="comment-meta"></p>
+        <p class="comment-content"></p>
       </article>
     </template>
 

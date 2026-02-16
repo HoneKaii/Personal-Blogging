@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>McNeilNews Checklist</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="checklist-page">
+      <header class="card">
+        <h1>📋 Wedding Checklist & Info</h1>
+        <p class="tagline">Track key items and leave event details for everyone.</p>
+      </header>
+
+      <section class="card">
+        <h2>Add item</h2>
+        <form id="checklist-form" class="checklist-add">
+          <label for="checklist-item">Checklist item</label>
+          <input id="checklist-item" maxlength="120" required />
+          <button type="submit">Add item</button>
+        </form>
+
+        <ul id="checklist-list" class="checklist-list"></ul>
+      </section>
+    </main>
+
+    <script src="checklist.js"></script>
+  </body>
+</html>

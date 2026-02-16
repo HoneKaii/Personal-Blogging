@@ -1,75 +1,84 @@
-# Generic Blog
+# McNeilNews
 
-Generic Blog is a dark "blogbear" themed personal blogging page designed to run on GitHub Pages.
-It behaves like a lightweight Tumblr-style feed: you write a post, publish it, and it appears in reverse chronological order.
-A built-in calendar lets you jump to specific days and browse posts from days before or after.
+McNeilNews is a dark-themed wedding update page designed for GitHub Pages.
+It works like a lightweight feed: post updates, browse by date in the calendar, and let visitors comment under each update.
 
 ## Features
 
-- Dark blogbear visual style.
-- Create posts directly in the browser.
-- Feed view sorted newest-to-oldest.
-- Monthly calendar with markers for days that have posts.
-- Day navigation (previous/next) for quick archive browsing.
+- Dark "blogbear" wedding theme.
+- Post updates in-browser.
+- Reverse-chronological feed.
+- Monthly calendar with post-day markers.
+- Previous/next day navigation.
+- Comments under each post.
+- Dedicated checklist/info page in a new tab.
 - Local persistence via browser `localStorage`.
 
-> Note: Posts are stored in your browser, not on a server. This is ideal for a static GitHub Pages deployment, but the posts are device/browser-specific unless you add a backend.
+> Note: Updates, comments, and checklist data are saved locally in the browser only.
 
 ## What GitHub Pages uses (and what is required)
 
-GitHub Pages hosts static websites directly from your repository. For this project, the required pieces are:
+GitHub Pages hosts static websites directly from your repository.
+For this project you need:
 
-1. **Static files in your repo**: `index.html`, `style.css`, `script.js`.
-2. **A publish source**: usually `main` branch root or `/docs` folder.
-3. **Repository Pages settings enabled**: in GitHub repo settings, choose the branch/folder source.
-4. **An entry page**: GitHub Pages serves `index.html` as the homepage.
+1. **Static files**: `index.html`, `style.css`, `script.js`, and `checklist.html` / `checklist.js`.
+2. **A publish source**: usually branch root (`main`) or `/docs`.
+3. **Pages enabled in repository settings**.
+4. **`index.html`** as the homepage entry point.
 
-### Optional GitHub Pages details
+Optional notes:
 
-- GitHub Pages can process sites with **Jekyll** by default.
-- This project is plain HTML/CSS/JS, so no special build pipeline is required.
-- If you ever add files/folders that Jekyll ignores (for example those starting with `_`) and still want them served, add a `.nojekyll` file.
-
-## Run locally
-
-Open `index.html` in your browser, or use a local static server.
+- GitHub Pages can process Jekyll by default.
+- This project is plain HTML/CSS/JS, so no build tool is required.
+- Add `.nojekyll` if you later need files served that Jekyll would otherwise ignore.
 
 ## Deploy to GitHub Pages
 
-1. Push this repository to GitHub.
+1. Push the repo to GitHub.
 2. Go to **Settings → Pages**.
-3. Under **Build and deployment**, select:
-   - **Source**: Deploy from a branch
-   - **Branch**: `main` (or your default branch)
-   - **Folder**: `/ (root)`
+3. Under **Build and deployment**:
+   - Source: **Deploy from a branch**
+   - Branch: `main`
+   - Folder: `/ (root)`
 4. Save and wait for deployment.
-5. Your blog will be available at:
-   - `https://<your-username>.github.io/<repo-name>/` (project site), or
-   - `https://<your-username>.github.io/` (user site repo format).
 
-## Migrate this to your own personal website
+## Photo uploads: best option for your use case
 
-If you want this on your own domain (for example `blog.yourdomain.com`), use this path:
+Since you already use Google Photos, the easiest and most reliable option is:
 
-1. **Choose hosting**
-   - Keep GitHub Pages, or move to another static host (Cloudflare Pages, Netlify, Vercel, your own server).
-2. **Point your domain**
-   - Update DNS records at your domain registrar.
-   - For GitHub Pages, configure `CNAME` and matching DNS records.
-3. **Set the custom domain**
-   - In host settings (or GitHub Pages settings), set your domain and enable HTTPS.
-4. **Move files**
-   - Upload/copy `index.html`, `style.css`, `script.js` to the new host.
-5. **Handle data persistence if needed**
-   - Current posts are in browser `localStorage` only.
-   - For real cross-device publishing, add a backend/API + database (for example Supabase, Firebase, or your own server).
-6. **Optional improvements for production**
-   - Add authentication for posting.
-   - Add image upload support.
-   - Add export/import for backups.
+### Recommended now: Google Photos shared album (best immediate option)
+
+- Create a shared wedding album.
+- Put the album link on McNeilNews.
+- Let guests upload directly into that album.
+
+Why this is best for now:
+- No custom backend needed.
+- You keep everything in the photo platform you already use.
+- Storage and media handling are managed by Google.
+
+### Alternative: Upload files directly to the page
+
+This requires a backend service (or object storage + signed upload flow), because GitHub Pages is static and cannot accept uploaded files by itself.
+If you eventually want direct uploads in-site, common options are:
+
+- Firebase Storage + auth
+- Supabase Storage + auth
+- Cloudinary upload widget
+- S3-compatible storage with an API endpoint
+
+## Migrate this to your personal website
+
+1. Choose hosting (GitHub Pages, Netlify, Vercel, Cloudflare Pages, etc.).
+2. Point DNS for your domain/subdomain (for example `news.yourdomain.com`).
+3. Set custom domain and enable HTTPS.
+4. Move static files: `index.html`, `style.css`, `script.js`, `checklist.html`, `checklist.js`.
+5. If you want shared data across devices/users, add a backend + database.
 
 ## File overview
 
-- `index.html` – page structure and app sections (composer, calendar, feed).
-- `style.css` – dark blogbear theme styling.
-- `script.js` – posting logic, feed rendering, calendar filtering, and local storage.
+- `index.html`: main feed page for wedding updates.
+- `style.css`: shared dark theme styles.
+- `script.js`: update posting, comments, feed/calendar behavior.
+- `checklist.html`: separate checklist/info page.
+- `checklist.js`: checklist state handling.
