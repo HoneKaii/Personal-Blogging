@@ -1,6 +1,12 @@
 [build]
   publish = "."
 
+# Favicon compatibility for browsers requesting /favicon.ico
+[[redirects]]
+  from = "/favicon.ico"
+  to = "/favicon.svg"
+  status = 301
+
 # Clean URL redirects for tab pages
 [[redirects]]
   from = "/checklist"

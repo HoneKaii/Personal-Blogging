@@ -18,6 +18,7 @@ It works like a lightweight feed: post updates, browse by date in the calendar, 
   - Travel
   - Need to Know
 - Local persistence via browser `localStorage`.
+- Added favicon support (`/favicon.svg`) with `/favicon.ico` redirect for browser compatibility.
 
 ## 21 March fix confirmation
 
@@ -45,6 +46,8 @@ No server runtime is required.
 3. Re-deploy after any `netlify.toml` changes.
 4. Use clean routes like `/media`, `/travel`, `/checklist` (redirected to `.html` pages).
 5. Unknown paths now fall back to `index.html` instead of the default Netlify 404 page.
+
+6. If devtools shows `/favicon.ico` 404, ensure `favicon.svg` is present and deployed (this repo now includes a redirect from `/favicon.ico` to `/favicon.svg`).
 
 ## How to add media/album content (Netlify-friendly)
 
