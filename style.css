@@ -1,13 +1,13 @@
 :root {
-  color-scheme: dark;
-  --bg: #1f1511;
-  --surface: #2f2019;
-  --surface-alt: #3b281f;
-  --text: #f7eee8;
-  --muted: #d5b7a2;
-  --accent: #e79d5c;
-  --accent-strong: #c96f3f;
-  --calendar-dot: #f4cf7d;
+  color-scheme: light;
+  --bg: #fff7f2;
+  --surface: #fff2e8;
+  --surface-alt: #ffe9dc;
+  --text: #5a3d31;
+  --muted: #9e7766;
+  --accent: #df8f78;
+  --accent-strong: #c67158;
+  --calendar-dot: #e6b96f;
 }
 
 * {
@@ -18,7 +18,7 @@ body {
   margin: 0;
   font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--text);
-  background: radial-gradient(circle at 10% -20%, #593629, var(--bg) 45%);
+  background: radial-gradient(circle at 8% -20%, #ffd9cb, var(--bg) 45%);
   min-height: 100vh;
 }
 
@@ -44,8 +44,8 @@ body {
 
 .big-day-banner {
   margin: 0.45rem 0 0;
-  color: var(--accent);
-  font-weight: 600;
+  color: var(--accent-strong);
+  font-weight: 700;
 }
 
 .quick-links {
@@ -57,16 +57,16 @@ body {
 
 .checklist-link {
   text-decoration: none;
-  border: 1px solid #a6603f;
-  background: #6b3f2b;
-  color: var(--text);
+  border: 1px solid #e1b2a1;
+  background: #f8d9cb;
+  color: #704a3d;
   border-radius: 10px;
   padding: 0.6rem 0.9rem;
   font-weight: 600;
 }
 
 .checklist-link:hover {
-  background: #814c34;
+  background: #f1c8b6;
 }
 
 .page-shell {
@@ -86,10 +86,10 @@ body {
 
 .card {
   background: linear-gradient(180deg, var(--surface), var(--surface-alt));
-  border: 1px solid #5a3c2f;
+  border: 1px solid #e7bfaf;
   border-radius: 14px;
   padding: 1rem;
-  box-shadow: 0 10px 24px rgb(0 0 0 / 28%);
+  box-shadow: 0 8px 24px rgb(174 108 85 / 16%);
 }
 
 label {
@@ -109,15 +109,15 @@ textarea {
   width: 100%;
   margin-bottom: 0.9rem;
   border-radius: 10px;
-  border: 1px solid #815d4a;
-  background: #1b120d;
+  border: 1px solid #dfb7a5;
+  background: #fffaf7;
   color: var(--text);
   padding: 0.7rem;
 }
 
 button {
-  border: 1px solid #9f6446;
-  background: #6f432f;
+  border: 1px solid #d29f8b;
+  background: #f4d4c3;
   color: var(--text);
   border-radius: 10px;
   padding: 0.55rem 0.8rem;
@@ -125,14 +125,15 @@ button {
 }
 
 button:hover {
-  background: #8a5238;
+  background: #efc7b3;
 }
 
 #post-form button,
 .comment-form button,
 .checklist-add button {
   background: var(--accent-strong);
-  border-color: #b66137;
+  border-color: #b8674f;
+  color: #fff8f4;
   font-weight: 700;
 }
 
@@ -169,8 +170,8 @@ button:hover {
 }
 
 .calendar-grid span {
-  border: 1px dashed #6e4b3b;
-  color: #9d7b6a;
+  border: 1px dashed #e5c4b6;
+  color: #b08a79;
 }
 
 .calendar-day {
@@ -188,13 +189,13 @@ button:hover {
 }
 
 .calendar-day.active {
-  outline: 2px solid var(--accent);
-  background: #965b3c;
+  outline: 2px solid #de9d84;
+  background: #f8ddcf;
 }
 
 .calendar-day.big-day {
-  border-color: #ffd083;
-  box-shadow: 0 0 0 1px #ffd083 inset;
+  border-color: #e6b96f;
+  box-shadow: 0 0 0 1px #e6b96f inset;
 }
 
 .feed-list {
@@ -203,10 +204,10 @@ button:hover {
 }
 
 .post-item {
-  border: 1px solid #6b4b3b;
+  border: 1px solid #e1bcab;
   border-radius: 10px;
   padding: 0.8rem;
-  background: #261912;
+  background: #fff6f0;
 }
 
 .post-title,
@@ -229,7 +230,7 @@ button:hover {
 
 .comments-section {
   margin-top: 0.9rem;
-  border-top: 1px solid #624333;
+  border-top: 1px solid #e4c4b3;
   padding-top: 0.8rem;
 }
 
@@ -240,8 +241,8 @@ button:hover {
 }
 
 .comment-item {
-  background: #1a120d;
-  border: 1px solid #5d3f2f;
+  background: #fff9f6;
+  border: 1px solid #e5c4b5;
   border-radius: 8px;
   padding: 0.55rem;
 }
@@ -268,7 +269,7 @@ button:hover {
 .rail-image {
   width: 100%;
   border-radius: 10px;
-  border: 1px solid #6f4c3a;
+  border: 1px solid #e1bdab;
   display: block;
   max-height: 220px;
   object-fit: cover;
@@ -300,8 +301,8 @@ button:hover {
 }
 
 .checklist-list li {
-  background: #261912;
-  border: 1px solid #624333;
+  background: #fff6f0;
+  border: 1px solid #e4c1b2;
   border-radius: 10px;
   padding: 0.7rem;
   display: flex;
@@ -327,8 +328,8 @@ button:hover {
 }
 
 .media-card {
-  background: #261912;
-  border: 1px solid #624333;
+  background: #fff6f0;
+  border: 1px solid #e4c1b2;
   border-radius: 10px;
   padding: 0.7rem;
 }
@@ -340,7 +341,7 @@ button:hover {
 .media-image {
   width: 100%;
   border-radius: 8px;
-  border: 1px solid #6b4938;
+  border: 1px solid #e2beae;
   max-height: 240px;
   object-fit: cover;
 }

@@ -1,11 +1,11 @@
 # McNeilNews
 
-McNeilNews is a dark autumn-themed wedding update page.
+McNeilNews is a light pastel autumn-floral themed wedding update page.
 It works like a lightweight feed: post updates, browse by date in the calendar, and let visitors comment under each update.
 
 ## Features
 
-- Autumn wedding color palette.
+- Light pastel autumn-floral color palette.
 - Big day highlighted on **21 March**.
 - Post updates in-browser with comments.
 - Monthly calendar with post markers.
