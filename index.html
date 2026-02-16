@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>McNeilNews</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div>
+        <h1>💍 McNeilNews</h1>
+        <p class="tagline">A warm autumn wedding update hub for friends and family.</p>
+        <p class="big-day-banner">Big Day: <strong>21 March</strong></p>
+      </div>
+      <nav class="quick-links" aria-label="Wedding pages">
+        <a class="checklist-link" href="checklist.html" target="_blank" rel="noopener noreferrer">Checklist & Info</a>
+        <a class="checklist-link" href="media.html" target="_blank" rel="noopener noreferrer">Media</a>
+        <a class="checklist-link" href="how-we-met.html" target="_blank" rel="noopener noreferrer">How We Met</a>
+        <a class="checklist-link" href="travel.html" target="_blank" rel="noopener noreferrer">Travel</a>
+        <a class="checklist-link" href="need-to-know.html" target="_blank" rel="noopener noreferrer">Need to Know</a>
+      </nav>
+    </header>
+
+    <main class="page-shell">
+      <section class="layout">
+        <section class="compose card">
+          <h2>Post an update</h2>
+          <form id="post-form">
+            <label for="post-title">Title</label>
+            <input id="post-title" name="title" type="text" maxlength="80" required />
+
+            <label for="post-content">Update</label>
+            <textarea id="post-content" name="content" rows="5" maxlength="1500" required></textarea>
+
+            <button type="submit">Share update</button>
+          </form>
+        </section>
+
+        <section class="calendar card">
+          <div class="calendar-header">
+            <button id="month-prev" type="button" aria-label="Previous month">◀</button>
+            <h2 id="month-label">Month</h2>
+            <button id="month-next" type="button" aria-label="Next month">▶</button>
+          </div>
+          <p id="wedding-countdown" class="countdown" aria-live="polite"></p>
+          <div class="weekday-grid" aria-hidden="true">
+            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+          </div>
+          <div id="calendar-grid" class="calendar-grid" role="grid" aria-label="Posting calendar"></div>
+          <div class="calendar-tools">
+            <button id="show-all" type="button">Show all updates</button>
+            <button id="day-prev" type="button">Previous day</button>
+            <button id="day-next" type="button">Next day</button>
+          </div>
+        </section>
+
+        <section class="feed card">
+          <div class="feed-header">
+            <h2>Update Feed</h2>
+            <p id="feed-filter-label">Showing all updates</p>
+          </div>
+          <div id="feed-list" class="feed-list"></div>
+        </section>
+      </section>
+
+      <aside class="photo-rail card" aria-label="Vertical photo album">
+        <h2>Photo Strip</h2>
+        <p class="rail-note">Add photos in <code>media/photos</code>, then update <code>media-config.js</code>.</p>
+        <div id="rail-list" class="rail-list"></div>
+      </aside>
+    </main>
+
+    <template id="post-template">
+      <article class="post-item">
+        <h3 class="post-title"></h3>
+        <p class="post-meta"></p>
+        <p class="post-content"></p>
+        <section class="comments-section">
+          <h4>Comments</h4>
+          <div class="comment-list"></div>
+          <form class="comment-form">
+            <label>
+              Name
+              <input class="comment-name" type="text" maxlength="50" required />
+            </label>
+            <label>
+              Comment
+              <textarea class="comment-text" rows="3" maxlength="600" required></textarea>
+            </label>
+            <button type="submit">Add comment</button>
+          </form>
+        </section>
+      </article>
+    </template>
+
+    <template id="comment-template">
+      <article class="comment-item">
+        <p class="comment-meta"></p>
+        <p class="comment-content"></p>
+      </article>
+    </template>
+
+    <script src="media-config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

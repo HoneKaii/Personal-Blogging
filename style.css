@@ -1,0 +1,379 @@
+:root {
+  color-scheme: light;
+  --bg: #fff7f2;
+  --surface: #fff2e8;
+  --surface-alt: #ffe9dc;
+  --text: #5a3d31;
+  --muted: #9e7766;
+  --accent: #df8f78;
+  --accent-strong: #c67158;
+  --calendar-dot: #e6b96f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 8% -20%, #ffd9cb, var(--bg) 45%);
+  min-height: 100vh;
+}
+
+.site-header {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 2rem 1rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+.tagline {
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+.big-day-banner {
+  margin: 0.45rem 0 0;
+  color: var(--accent-strong);
+  font-weight: 700;
+}
+
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.checklist-link {
+  text-decoration: none;
+  border: 1px solid #e1b2a1;
+  background: #f8d9cb;
+  color: #704a3d;
+  border-radius: 10px;
+  padding: 0.6rem 0.9rem;
+  font-weight: 600;
+}
+
+.checklist-link:hover {
+  background: #f1c8b6;
+}
+
+.page-shell {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 1rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.card {
+  background: linear-gradient(180deg, var(--surface), var(--surface-alt));
+  border: 1px solid #e7bfaf;
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 8px 24px rgb(174 108 85 / 16%);
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+textarea {
+  width: 100%;
+  margin-bottom: 0.9rem;
+  border-radius: 10px;
+  border: 1px solid #dfb7a5;
+  background: #fffaf7;
+  color: var(--text);
+  padding: 0.7rem;
+}
+
+button {
+  border: 1px solid #d29f8b;
+  background: #f4d4c3;
+  color: var(--text);
+  border-radius: 10px;
+  padding: 0.55rem 0.8rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #efc7b3;
+}
+
+#post-form button,
+.comment-form button,
+.checklist-add button {
+  background: var(--accent-strong);
+  border-color: #b8674f;
+  color: #fff8f4;
+  font-weight: 700;
+}
+
+.countdown {
+  margin: 0.55rem 0 0.2rem;
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
+.calendar-header,
+.feed-header,
+.calendar-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.weekday-grid,
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.weekday-grid span {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.calendar-grid button,
+.calendar-grid span {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  display: grid;
+  place-content: center;
+  font-size: 0.9rem;
+}
+
+.calendar-grid span {
+  border: 1px dashed #e5c4b6;
+  color: #b08a79;
+}
+
+.calendar-day {
+  position: relative;
+}
+
+.calendar-day.has-post::after {
+  content: "";
+  position: absolute;
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 999px;
+  background: var(--calendar-dot);
+  bottom: 0.3rem;
+}
+
+.calendar-day.active {
+  outline: 2px solid #de9d84;
+  background: #f8ddcf;
+}
+
+.calendar-day.big-day {
+  border-color: #e6b96f;
+  box-shadow: 0 0 0 1px #e6b96f inset;
+}
+
+.feed-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.post-item {
+  border: 1px solid #e1bcab;
+  border-radius: 10px;
+  padding: 0.8rem;
+  background: #fff6f0;
+}
+
+.post-title,
+.comments-section h4 {
+  margin: 0;
+}
+
+.post-meta,
+.comment-meta {
+  margin: 0.35rem 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.post-content,
+.comment-content {
+  white-space: pre-wrap;
+  margin: 0;
+}
+
+.comments-section {
+  margin-top: 0.9rem;
+  border-top: 1px solid #e4c4b3;
+  padding-top: 0.8rem;
+}
+
+.comment-list {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0.6rem 0;
+}
+
+.comment-item {
+  background: #fff9f6;
+  border: 1px solid #e5c4b5;
+  border-radius: 8px;
+  padding: 0.55rem;
+}
+
+.photo-rail {
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.rail-note {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.rail-list {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.rail-item {
+  margin: 0;
+}
+
+.rail-image {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #e1bdab;
+  display: block;
+  max-height: 220px;
+  object-fit: cover;
+}
+
+.rail-item figcaption {
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.empty-state {
+  margin: 0;
+  color: var(--muted);
+}
+
+.checklist-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.checklist-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.checklist-list li {
+  background: #fff6f0;
+  border: 1px solid #e4c1b2;
+  border-radius: 10px;
+  padding: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+
+.static-page ul,
+.static-page ol {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.static-page li {
+  margin-bottom: 0.45rem;
+}
+
+.media-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.media-card {
+  background: #fff6f0;
+  border: 1px solid #e4c1b2;
+  border-radius: 10px;
+  padding: 0.7rem;
+}
+
+.media-card h3 {
+  margin: 0.55rem 0 0;
+}
+
+.media-image {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #e2beae;
+  max-height: 240px;
+  object-fit: cover;
+}
+
+@media (min-width: 980px) {
+  .page-shell {
+    grid-template-columns: minmax(0, 1fr) 300px;
+    align-items: start;
+  }
+
+  .layout {
+    grid-template-columns: minmax(280px, 360px) 1fr;
+    grid-template-areas:
+      "compose feed"
+      "calendar feed";
+  }
+
+  .compose {
+    grid-area: compose;
+  }
+
+  .calendar {
+    grid-area: calendar;
+  }
+
+  .feed {
+    grid-area: feed;
+  }
+}

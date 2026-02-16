@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>McNeilNews Media</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="checklist-page">
+      <section class="card static-page">
+        <h1>📸 Media</h1>
+        <p class="tagline">Share and view moments from our wedding journey.</p>
+
+        <h2>Album</h2>
+        <div id="media-gallery" class="media-gallery"></div>
+
+        <h2>How to add photos/videos (Netlify-friendly)</h2>
+        <ol>
+          <li>Add files to <code>media/photos/</code> in this repo (for example <code>media/photos/rehearsal.jpg</code>).</li>
+          <li>Open <code>media-config.js</code> and add an item with <code>type: "image"</code> or <code>type: "video"</code>.</li>
+          <li>Commit and push. Netlify redeploys automatically.</li>
+        </ol>
+
+        <h2>Google Photos option</h2>
+        <p>Keep using a Google Photos shared album by adding a <code>type: "link"</code> entry in <code>media-config.js</code>.</p>
+      </section>
+    </main>
+
+    <script src="media-config.js"></script>
+    <script src="media.js"></script>
+  </body>
+</html>

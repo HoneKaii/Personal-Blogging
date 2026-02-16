@@ -1,0 +1,66 @@
+[build]
+  publish = "."
+
+# Favicon compatibility for browsers requesting /favicon.ico
+[[redirects]]
+  from = "/favicon.ico"
+  to = "/favicon.svg"
+  status = 301
+
+# Clean URL redirects for tab pages
+[[redirects]]
+  from = "/checklist"
+  to = "/checklist.html"
+  status = 301
+
+[[redirects]]
+  from = "/checklist/"
+  to = "/checklist.html"
+  status = 301
+
+[[redirects]]
+  from = "/media"
+  to = "/media.html"
+  status = 301
+
+[[redirects]]
+  from = "/media/"
+  to = "/media.html"
+  status = 301
+
+[[redirects]]
+  from = "/travel"
+  to = "/travel.html"
+  status = 301
+
+[[redirects]]
+  from = "/travel/"
+  to = "/travel.html"
+  status = 301
+
+[[redirects]]
+  from = "/how-we-met"
+  to = "/how-we-met.html"
+  status = 301
+
+[[redirects]]
+  from = "/how-we-met/"
+  to = "/how-we-met.html"
+  status = 301
+
+[[redirects]]
+  from = "/need-to-know"
+  to = "/need-to-know.html"
+  status = 301
+
+[[redirects]]
+  from = "/need-to-know/"
+  to = "/need-to-know.html"
+  status = 301
+
+# Optional fallback so unknown routes land on the homepage instead of Netlify 404.
+# Existing files are still served directly.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
