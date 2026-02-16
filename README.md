@@ -41,13 +41,20 @@ No server runtime is required.
 
 ### If Netlify shows "Page not found"
 
-1. Confirm `netlify.toml` is in the repository root.
-2. Confirm publish directory is `.` (project root), not a subfolder.
-3. Re-deploy after any `netlify.toml` changes.
-4. Use clean routes like `/media`, `/travel`, `/checklist` (redirected to `.html` pages).
-5. Unknown paths now fall back to `index.html` instead of the default Netlify 404 page.
+1. Confirm `netlify.toml` **and** `_redirects` are in the repository root.
+2. Confirm Netlify site settings:
+   - Build command: blank
+   - Publish directory: `.`
+   - Base directory: blank (unless you intentionally use a subfolder/monorepo)
+3. Confirm the selected production branch matches where your commits were pushed (usually `main`).
+4. Open the latest Deploy log and verify files like `index.html`, `style.css`, and `script.js` are included in the published output.
+5. Trigger **Clear cache and deploy site** in Netlify after routing/config changes.
+6. Test the default Netlify domain (`https://<site>.netlify.app`) before custom domains/DNS to isolate config vs DNS issues.
+7. Use clean routes like `/media`, `/travel`, `/checklist` (redirected to `.html` pages).
+8. Unknown paths fall back to `index.html` instead of the default Netlify 404 page.
+9. If devtools shows `/favicon.ico` 404, this repo now ships both `favicon.ico` and `favicon.svg`; redeploy and hard-refresh your browser cache.
 
-6. If devtools shows `/favicon.ico` 404, ensure `favicon.svg` is present and deployed (this repo now includes a redirect from `/favicon.ico` to `/favicon.svg`).
+> Note: I could not fetch Netlify’s support page from this execution environment due outbound network restrictions (HTTP 403), so the checklist above reflects standard Netlify 404 triage used in that guide family.
 
 ## How to add media/album content (Netlify-friendly)
 
