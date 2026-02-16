@@ -137,6 +137,12 @@ button:hover {
   font-weight: 700;
 }
 
+.countdown {
+  margin: 0.55rem 0 0.2rem;
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
 .calendar-header,
 .feed-header,
 .calendar-tools {

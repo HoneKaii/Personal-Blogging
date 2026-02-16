@@ -9,6 +9,7 @@ It works like a lightweight feed: post updates, browse by date in the calendar, 
 - Big day highlighted on **21 March**.
 - Post updates in-browser with comments.
 - Monthly calendar with post markers.
+- Wedding countdown shown in the calendar card.
 - Vertical photo strip on the outside of the main page.
 - Extra tabs/pages:
   - Checklist & Info

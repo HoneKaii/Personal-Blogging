@@ -9,6 +9,7 @@ const commentTemplate = document.querySelector("#comment-template");
 const monthLabel = document.querySelector("#month-label");
 const calendarGrid = document.querySelector("#calendar-grid");
 const filterLabel = document.querySelector("#feed-filter-label");
+const countdownLabel = document.querySelector("#wedding-countdown");
 
 const monthPrevButton = document.querySelector("#month-prev");
 const monthNextButton = document.querySelector("#month-next");
@@ -75,6 +76,7 @@ renderPhotoRail();
 function renderAll() {
   renderCalendar();
   renderFeed();
+  renderCountdown();
 }
 
 function renderFeed() {
@@ -328,6 +330,34 @@ function renderPhotoRail() {
     figure.appendChild(caption);
     railList.appendChild(figure);
   }
+}
+
+
+function renderCountdown() {
+  if (!countdownLabel) {
+    return;
+  }
+
+  const today = new Date();
+  const target = nextWeddingDate(today);
+
+  const start = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  const end = new Date(target.getFullYear(), target.getMonth(), target.getDate());
+  const daysLeft = Math.round((end - start) / 86400000);
+
+  countdownLabel.textContent = `${daysLeft} day${daysLeft === 1 ? "" : "s"} until the Big Day (${end.toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" })})`;
+}
+
+function nextWeddingDate(fromDate) {
+  const year = fromDate.getFullYear();
+  const thisYearWedding = new Date(year, 2, 21);
+  const startOfToday = new Date(fromDate.getFullYear(), fromDate.getMonth(), fromDate.getDate());
+
+  if (thisYearWedding >= startOfToday) {
+    return thisYearWedding;
+  }
+
+  return new Date(year + 1, 2, 21);
 }
 
 function formatDateTime(date) {
